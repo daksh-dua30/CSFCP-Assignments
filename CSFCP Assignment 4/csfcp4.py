@@ -6,7 +6,7 @@ def number_guessing_game():
     print("Welcome to the Number Guessing Game!")
     print("I'm thinking of a number between 1 and 100.")
 
-    correct_number = random.randint(1, 100)
+    number_to_guess = random.randint(1, 100)
     attempts = 0
 
     while True:
@@ -17,13 +17,13 @@ def number_guessing_game():
             user_guess = int(user_input)
             attempts += 1
 
-            if user_guess < correct_number:
+            if user_guess < number_to_guess:
                 print("Too low! Try again.")
-            elif user_guess > correct_number:
+            elif user_guess > number_to_guess:
                 print("Too high! Try again.")
             else:
                 print(
-                    f"Congratulations! You've guessed the correct number {correct_number} in {attempts} attempts.")
+                    f"Congratulations! You've guessed the correct number {number_to_guess} in {attempts} attempts.")
                 break  # Exit the loop if the guess is correct
         else:
             print("Please enter a valid number.")
