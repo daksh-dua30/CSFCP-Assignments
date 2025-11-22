@@ -3,8 +3,6 @@
 
 import random
 
-# DEFINING THE FUNCTION FOR THE GAME
-
 
 def number_guessing_game():
     print("\n\n--------- NUMBER GUESSING GAME ---------\n\n")
@@ -14,33 +12,51 @@ def number_guessing_game():
     # RANDOMIZING THE NUMBER TO BE GUESSED
     number_to_guess = random.randint(1, 100)
     attempts = 0
-    # LIMITING THE NUMBER OF MAXIMUM ATTEMPTS
     max_attempts = 10
+    # INITIALIZE TO AVOID REFERENCE ERRORS
+    user_guess = None
 
-    while attempts < max_attempts:
-        user_input = input("Enter your guess: ")
-        print("\n")
+    try:
+        while attempts < max_attempts:
 
-        # CHECK IF THE INPUT IS VALID
-        if user_input.isdigit():
-            user_guess = int(user_input)
-            attempts += 1
+            try:
+                user_input = input("Enter your guess: ")
+                print("\n")
 
-            # ADDING HINTS TO THE GAME TO MAKE IT FEEL INTERACTIVE
-            if user_guess < number_to_guess:
-                print("Too low! Try again.\n")
-            elif user_guess > number_to_guess:
-                print("Too high! Try again.\n")
-            else:
-                print(
-                    f"Congratulations! You've guessed the correct number {number_to_guess} in {attempts} attempts.")
-                break  # IF THE GUESS IS RIGHT, THE LOOP BREAKS
-        else:
-            print("Please enter a valid number.\n")  # FOR INVALID INPUTS
+                # CHECK IF THE INPUT IS VALID
+                if user_input.isdigit():
+                    user_guess = int(user_input)
+                    attempts += 1
 
+                    # ADDING HINTS
+                    if user_guess < number_to_guess:
+                        print("Too low! Try again.\n")
+                    elif user_guess > number_to_guess:
+                        print("Too high! Try again.\n")
+                    else:
+                        print(
+                            f"Congratulations! You've guessed the correct number {number_to_guess} in {attempts} attempts."
+                        )
+                        break  # CORRECT GUESS EXITS LOOP
+                else:
+                    print("Please enter a valid number.\n")
+
+            except ValueError:
+                print("Invalid input! Please enter a number.\n")
+
+    except KeyboardInterrupt:
+        print("\n\nGame interrupted by user. Exiting...\n")
+        return
+
+    except Exception as e:
+        print(f"\nAn unexpected error occurred: {e}\n")
+        return
+
+    # OUT OF ATTEMPTS
     if attempts == max_attempts and user_guess != number_to_guess:
         print(
-            f"Sorry, you've used all {max_attempts} attempts. The correct number was {number_to_guess}.")
+            f"Sorry, you've used all {max_attempts} attempts. The correct number was {number_to_guess}."
+        )
 
 
 # RUNNING THE GAME
