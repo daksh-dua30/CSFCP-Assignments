@@ -1,9 +1,11 @@
 # NUMBER GUESSING GAME
-# BY --> DAKSH 
+# BY --> DAKSH
 
 import random
 
 # DEFINING THE FUNCTION FOR THE GAME
+
+
 def number_guessing_game():
     print("\n-------- NUMBER GUESSING GAME --------\n")
     print("Welcome to the Number Guessing Game!")
@@ -12,12 +14,13 @@ def number_guessing_game():
     # RANDOMIZING THE NUMBER TO BE GUESSED
     number_to_guess = random.randint(1, 100)
     attempts = 0
+    # LIMITING THE NUMBER OF MAXIMUM ATTEMPTS 
+    max_attempts = 10
 
-    # USING LOOP TO GIVE MULTIPLE ATTEMPTS TO THE USER
-    while True:
+    while attempts < max_attempts:
         user_input = input("Enter your guess: ")
 
-        # CHECK IF THE INPUT IS VALID 
+        # CHECK IF THE INPUT IS VALID
         if user_input.isdigit():
             user_guess = int(user_input)
             attempts += 1
@@ -34,6 +37,10 @@ def number_guessing_game():
         else:
             print("Please enter a valid number.")  # FOR INVALID INPUTS 
 
+    if attempts == max_attempts and user_guess != number_to_guess:
+        print(
+            f"Sorry, you've used all {max_attempts} attempts. The correct number was {number_to_guess}.")
 
-# RUNNING THE GAME
+
+# RUN THE GAME
 number_guessing_game()
