@@ -1,4 +1,4 @@
-##🚀 Career Roadmap & Technical Skills Development — Assignment Repository##
+🚀 Career Roadmap & Technical Skills Development — Assignment Repository
 
 This repository contains all the files and documentation submitted for Computer Science Fundamentals & Career Pathways (ETCCCP105). It showcases my learning across computational thinking, Linux & automation, emerging technologies, and professional career planning.
 
